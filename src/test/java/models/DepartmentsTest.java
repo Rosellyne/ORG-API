@@ -23,7 +23,7 @@ public class DepartmentsTest {
     @Test
     public void getDescriptionReturnsCorrectDescription() throws Exception {
         Departments testDepartments = setupDepartments();
-        assertEquals("deals with maintaining company finances", testDepartments.getDescription());
+        assertEquals("maintaining company finances ", testDepartments.getDescription());
     }
 
     @Test
@@ -33,7 +33,29 @@ public class DepartmentsTest {
     }
 
 
+
+    @Test
+    public void setNameSetsCorrectName() throws Exception {
+        Departments testDepartments = setupDepartments();
+        testDepartments.setName("Accounting");
+        assertNotEquals("Finance", testDepartments.getName());
+    }
+    @Test
+    public void setDescriptionSetsCorrectDescription() throws Exception {
+        Departments testDepartments = setupDepartments();
+        testDepartments.setDescription(" managing the company");
+        assertNotEquals(" maintaining company finances", testDepartments.getDescription());
+    }
+
+    @Test
+    public void setSetsNumberOfEmployeesCorrectValue() throws Exception {
+        Departments testDepartments = setupDepartments();
+        testDepartments.setNumberOfEmployees(40);
+        assertNotEquals(60, testDepartments.getNumberOfEmployees());
+
+    }
+
     public Departments setupDepartments (){
-        return new Departments("Finance", "deals with maintaining company finances ", 60);
+        return new Departments("Finance", "maintaining company finances ", 60);
     }
 }

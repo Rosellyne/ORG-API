@@ -25,8 +25,19 @@ public class UserTest {
         User testUser = setupUser();
         assertEquals(1, testUser.getDepartmentId());
     }
+    @Test
+    public void setPositionSetsCorrectPosition() throws Exception {
+        User testUser = setupUser();
+        testUser.setPosition("accountant");
+        assertNotEquals("Finance officer", testUser.getPosition());
+    }
+    @Test
+    public void setDepartmentIdSetsCorrectDepartmentId() throws Exception {
+        User testUser = setupUser();
+        testUser.setDepartmentId(2);
+        assertNotEquals(1, testUser.getDepartmentId());
 
-
+    }
 
 
     public User setupUser (){

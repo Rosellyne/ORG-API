@@ -21,6 +21,19 @@ public class NewsTest {
         News testNews = setupNews();
         assertEquals("water storage", testNews.getContent());
     }
+    @Test
+    public void setContent() {
+        News testNews = setupNews();
+        testNews.setContent("disease outbreak");
+        assertNotEquals("water storage", testNews.getContent());
+    }
+    @Test
+    public void setId() {
+        News testNews = setupNews();
+        testNews.setId(2);
+        assertEquals(2, testNews.getId());
+    }
+
 
     public News setupNews() {
         return new News("water storage");
