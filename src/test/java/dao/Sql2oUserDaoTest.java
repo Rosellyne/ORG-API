@@ -6,6 +6,8 @@ import org.junit.Before;
 import static org.junit.Assert.*;
 
 public class Sql2oUserDaoTest {
+    private  connection conn;
+    private  Sql2oNewsDao
 
     @Before
     public void setUp() throws Exception {
