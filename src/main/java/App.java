@@ -137,8 +137,7 @@ public class App {
             String description = request.queryParams("description");
             int employees =Integer.parseInt(request.queryParams("employees"));
             Departments newDepartments = new Departments(name,description,employees);
-            departmentsDao.add(newDepartments);
-            System.out.println(newDepartments.getDescription());
+            departmentsDao.add(newDepartments)
             return new ModelAndView(model,"success.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -154,12 +153,12 @@ public class App {
             int departmentId =Integer.parseInt(request.queryParams("departmentId"));
             News newNews = new News(news,departmentId);
             newsDao.add(newNews);
-            return new ModelAndView(model,"news.hbs");
+            return new ModelAndView(model,"success.hbs");
         }, new HandlebarsTemplateEngine());
 
         get ("/news",(request, response) -> {
                     Map<String,Object>model =new HashMap<>();
-                    model.put("users",userDao.getAll());
+                    model.put("news",newsDao.getAll());
                     return new ModelAndView(model,"news.hbs");
                 },new HandlebarsTemplateEngine());
 
@@ -169,9 +168,10 @@ public class App {
             int departmentId =Integer.parseInt(request.queryParams("departmentId"));
             User newUser = new User(position,departmentId);
            userDao.add(newUser);
-            return new ModelAndView(model,"user.hbs");
+            return new ModelAndView(model,"success.hbs");
         }, new HandlebarsTemplateEngine());
-        get ("/user",(request, response) -> {
+
+        get ("/users",(request, response) -> {
             Map<String,Object>model =new HashMap<>();
             model.put("users",userDao.getAll());
             return new ModelAndView(model,"user.hbs");

@@ -1,14 +1,29 @@
 {{#partial "content"}}
     <h1> Users</h1>
-    {{#if users}}
+    <br>
+    <br>
+    <table class="table table-dark">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Position</th>
+            <th scope="col">DepartmentId </th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+
+
         {{#each users}}
-            <p> User's Position:{{position}}</p>
-            <p> Department: {{departmentId}}</p>
-            >
+            <tr>
+
+                <td>{{position}}</td>
+
+                <td>{{departmentId}}</td>
+
         {{/each}}
 
-    {{else}}
-        <p> No user yet!</p>
-    {{/if}}
+        </tbody>
+    </table>
 {{/partial}}
 {{>layout.hbs}}

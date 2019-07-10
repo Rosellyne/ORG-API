@@ -29,7 +29,7 @@ public class Sql2oUserDao implements UserDao {
 
     @Override
     public void add(User user) {
-        String sql = "INSERT INTO departments (name,description,numberofemployees) VALUES (:name, :description, :numberofemployees)"; //if you change your model, be sure to update here as well!
+        String sql = "INSERT INTO users (position,departmentId) VALUES (:position, :departmentId)"; //if you change your model, be sure to update here as well!
         try (Connection con = sql2o.open()) {
             int id = (int) con.createQuery(sql, true)
                     .bind(user)
@@ -44,7 +44,7 @@ public class Sql2oUserDao implements UserDao {
     @Override
     public List<User> getAll() {
         try (Connection con = sql2o.open()) {
-            return con.createQuery("SELECT * FROM user")
+            return con.createQuery("SELECT * FROM users")
                     .executeAndFetch(User.class);
         }
     }
@@ -64,7 +64,7 @@ public class Sql2oUserDao implements UserDao {
 
     @Override
     public void deleteById(int id) {
-        String sql = "DELETE from user WHERE id=:id";
+        String sql = "DELETE from users WHERE id=:id";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("id", id)
@@ -75,7 +75,7 @@ public class Sql2oUserDao implements UserDao {
     }
     @Override
     public void clearAll() {
-        String sql = "DELETE from user";
+        String sql = "DELETE from users";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql).executeUpdate();
         } catch (Sql2oException ex) {
