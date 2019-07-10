@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{#block "title"}}Api{{/block}}</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='/App.css'>
+</head>
+
+<body>
+<div class="homeland">
+    <ul class="nav nav-tabs">
+        <li role="presentation" class="active"><a href="/">Home</a></li>
+        <li role="presentation"><a href="/">Add the department
+        <li role="presentation"><a href="/">Add the news</a></li>
+    </ul>
+    <!--begin main template-->
+
+    <div class="col-md-12">
+        {{#block "content"}}
+        {{/block}}
+
+    </div>
+</div>
+<!--end main template-->
+{{#block "footer"}}
+    <footer class="footer">
+
+    </footer>
+    </body>
+
+{{/block}}

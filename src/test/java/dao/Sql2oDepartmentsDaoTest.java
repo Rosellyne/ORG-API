@@ -1,9 +1,7 @@
 package dao;
 
 import models.Departments;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.sql2o.*;
 
 import org.sql2o.Connection;
@@ -11,11 +9,11 @@ import org.sql2o.Connection;
 import static org.junit.Assert.*;
 
 public class Sql2oDepartmentsDaoTest {
-    private Sql2oDepartmentsDao departmentsDao;
-    private Connection conn;
+    private static Sql2oDepartmentsDao departmentsDao;
+    private static Connection conn;
 
-    @Before
-    public void setUp() throws Exception {
+    @BeforeClass
+    public static void setUp() throws Exception {
         String connectionString = "jdbc:postgresql://localhost:5432/org_api_test";
         Sql2o sql2o = new Sql2o(connectionString, "roselyne", "moraa@2018");
         departmentsDao = new Sql2oDepartmentsDao(sql2o);
@@ -24,7 +22,11 @@ public class Sql2oDepartmentsDaoTest {
 
     @After
     public void tearDown() throws Exception {
-        departmentsDao.clearAll();
+//        departmentsDao.clearAll();
+//        conn.close();
+    }
+    @AfterClass
+    public static void shutDown() throws Exception{
         conn.close();
     }
 
@@ -67,8 +69,10 @@ public class Sql2oDepartmentsDaoTest {
     @Test
     public void findById() throws Exception {
         Departments testDepartments = setupNewDepartments();
+
+        departmentsDao.add(testDepartments);
 //        Departments otherDepartments = setupNewDepartments();
-        assertEquals(testDepartments, departmentsDao.findById(testDepartments.getId()));
+        assertEquals(testDepartments.getName(), departmentsDao.getAll().size());
     }
 
 
