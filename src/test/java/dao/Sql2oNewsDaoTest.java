@@ -8,6 +8,8 @@ import org.junit.Test;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class Sql2oNewsDaoTest {
@@ -55,7 +57,22 @@ public class Sql2oNewsDaoTest {
         newsDao.clearAll();
         assertEquals(0, newsDao.getAll().size());
     }
+
+//    @Test
+//    public void  getAllNewsByDepartment() throws Exception {
+//        News testNews = setupNewNews();
+//        List<News> allNewsByDept =newsDao.getAllNewsForADepartments(News.getDepartmentId());
+//        assertEquals(News.getDepartmentId, allNewsByDept.get(0).getDepartmentId());
+//    }
+    @Test
+    public void findById() {
+        News testnews = setupNewNews();
+        assertEquals(testnews, newsDao.findById(testnews.getId()));
+    }
+
+
     public News setupNewNews() {
         return new News("disease outbreak");
     }
+
 }

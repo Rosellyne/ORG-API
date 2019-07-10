@@ -1,5 +1,6 @@
 package dao;
 
+import models.DB;
 import models.Departments;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
@@ -18,9 +19,7 @@ public class Sql2oDepartmentsDao  implements DepartmentsDao{
         String sql = "INSERT INTO departments (name,description,numberofemployees) VALUES (:name, :description, :numberofemployees)"; //if you change your model, be sure to update here as well!
         try (Connection con = sql2o.open()) {
             int id = (int) con.createQuery(sql, true)
-                    .addParameter("name", departments.getName())
-                    .addParameter("description", departments.getDescription())
-                    .addParameter("numberofemployees", departments.getNumberOfEmployees())
+                    .bind(departments)
                     .executeUpdate()
                     .getKey();
             departments.setId(id);
@@ -35,6 +34,16 @@ public class Sql2oDepartmentsDao  implements DepartmentsDao{
             return con.createQuery("SELECT * FROM departments")
                     .throwOnMappingFailure(false)
                     .executeAndFetch(Departments.class);
+        }
+    }
+    @Override
+    public  Departments findById(int id){
+        String sql = "SELECT * FROM departments  WHERE id =:id;";
+        try(Connection con= sql2o.open()){
+            return con.createQuery(sql)
+                    .addParameter("id",id)
+                    .executeAndFetchFirst(Departments.class);
+
         }
     }
 

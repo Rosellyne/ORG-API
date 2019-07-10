@@ -10,6 +10,8 @@ import org.sql2o.Sql2o;
 
 import org.sql2o.Connection;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class Sql2oUserDaoTest {
@@ -56,6 +58,17 @@ public class Sql2oUserDaoTest {
         User otherUser = setupNewUser();
         userDao.clearAll();
         assertEquals(1, userDao.getAll().size());
+    }
+//        @Test
+//    public void  getAllUserByDepartments() throws Exception {
+//        User testuser = setupNewUser();
+//        List<User> allUserByDept =userDao.getAllUserByADepartments(User.getDepartmentId());
+//        assertEquals(testuser.getDepartmentId(),allUserByDept.get(0).getDepartmentId());
+//    }
+    @Test
+    public void findById() {
+        User testuser = setupNewUser();
+        assertEquals(testuser, userDao.findById(testuser.getId()));
     }
     public User setupNewUser() {
         return new  User("Accountant",1);

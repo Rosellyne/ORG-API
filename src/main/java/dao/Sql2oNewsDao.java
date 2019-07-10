@@ -9,6 +9,15 @@ import org.sql2o.Sql2oException;
 import java.util.List;
 
 public class Sql2oNewsDao implements NewsDao {
+    @Override
+    public List<News> getAllNewsForADepartments(int departmentid) {
+        try (Connection con = sql2o.open()) {
+            return con.createQuery("SELECT * FROM user WHERE departmentId = :departmentId")
+                    .addParameter("departmentId", departmentid)
+                    .executeAndFetch(News.class);
+        }
+    }
+
     private  final Sql2o sql2o;
     public Sql2oNewsDao(Sql2o sql2o){
         this.sql2o =sql2o;
@@ -27,6 +36,16 @@ public class Sql2oNewsDao implements NewsDao {
             System.out.println(ex);
         }
     }
+    @Override
+    public  News findById(int id){
+        String sql = "SELECT * FROM news  WHERE id =:id;";
+        try(Connection con= sql2o.open()){
+            return con.createQuery(sql)
+                    .addParameter("id",id)
+                    .executeAndFetchFirst(News.class);
+
+        }
+    }
 
     @Override
     public List<News> getAll() {
@@ -35,6 +54,7 @@ public class Sql2oNewsDao implements NewsDao {
                     .executeAndFetch(News.class);
         }
     }
+
 
 
     @Override

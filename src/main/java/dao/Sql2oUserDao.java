@@ -8,6 +8,17 @@ import org.sql2o.Sql2oException;
 import java.util.List;
 
 public class Sql2oUserDao implements UserDao {
+
+    @Override
+    public List<User> getAllUserByDepartments(int departmentId) {
+        try (Connection con = sql2o.open()) {
+            return con.createQuery("SELECT * FROM user WHERE departmentId = :departmentId")
+                    .addParameter("departmentId", departmentId)
+                    .executeAndFetch(User.class);
+        }
+
+    }
+
     private final Sql2o sql2o;
     public Sql2oUserDao(Sql2o sql2o){
         this.sql2o =sql2o;
@@ -38,15 +49,18 @@ public class Sql2oUserDao implements UserDao {
         }
     }
 
+    @Override
+    public  User findById(int id){
+        String sql = "SELECT * FROM users  WHERE id =:id;";
+        try(Connection con= sql2o.open()){
+            return con.createQuery(sql)
+                    .addParameter("id",id)
+                    .executeAndFetchFirst(User.class);
 
-//    @Override
-//    public List<User> getAllUsersByDepartments(int departmentId) {
-//        try (Connection con = sql2o.open()) {
-//            return con.createQuery("SELECT * FROM user WHERE departmentId = :departmentId")
-//                    .addParameter("departmentId", departmentId)
-//                    .executeAndFetch(User.class);
-//        }
-//    }
+        }
+    }
+
+
 
     @Override
     public void deleteById(int id) {

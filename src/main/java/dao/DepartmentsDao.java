@@ -12,10 +12,8 @@ public interface DepartmentsDao {
 
     //read
     List<Departments> getAll();
-    // List<User> getAllUserForADepartments(int id);
 
-    //update
-    //omit for now
+    Departments findById(int id);
 
     //delete
     void deleteById(int id);
