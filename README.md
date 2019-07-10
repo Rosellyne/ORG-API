@@ -16,8 +16,8 @@ This is a spark-java application that enables one dispay the data from a databas
 * Start Postgres in an additional terminal tab by entering postgres.
 * In yet another terminal window start psql with psql.
 * In psql tab enter CREATE DATABASE org_api;.
-* In terminal tab enter psql wildlife_tracker < wildlife_tracker.sql.
-* In psql tab enter \c wildlife_tracker then \dt.
+* In terminal tab enter psql org_api.
+* In psql tab enter \c org_api then \dt.
 * In terminal tab enter gradle run.
 
 ## Program Behaviour
@@ -31,11 +31,11 @@ This is a spark-java application that enables one dispay the data from a databas
 
 ## Technologies
 
-*Junit
-*Java
-*Spark
-*postgres
-*intelli J IDEA
++ Junit
++ Java
++ Spark
++ postgres
++ intelli J IDEA
 
 ## Known Bugs
 
