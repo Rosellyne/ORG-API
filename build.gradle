@@ -7,7 +7,7 @@ group 'com.moringa.Organisational-API'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
-mainClassName="app"
+mainClassName="App"
 
 repositories {
     mavenCentral()

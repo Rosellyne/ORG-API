@@ -9,6 +9,8 @@ import models.News;
 import models.User;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
+import spark.ModelAndView;
+import spark.template.handlebars.HandlebarsTemplateEngine;
 
 import java.util.HashMap;
 import java.util.List;
@@ -110,19 +112,70 @@ public class App {
             jsonMap.put("errorMessage", err.getMessage());
             res.type("application/json");
             res.status(err.getStatusCode());
+            res.type("application/json");
             res.body(gson.toJson(jsonMap));
         });
 
-
-        after((req, res) ->{
-            res.type("application/json");
-        });
+//
+//        after((req, res) ->{
+//            res.type("application/json");
+//        });
 
 
 
         //TEMPLATES
 
+        get("/forms",(request, response) -> {
+            Map<String,Object> model =new HashMap<>();
+            return  new ModelAndView(model,"forms.hbs");
+        }, new HandlebarsTemplateEngine());
 
+
+        post("/department/new",(request, response) -> {
+            Map<String,Object> model =new HashMap<>();
+            String  name =request.queryParams("name");
+            String description = request.queryParams("description");
+            int employees =Integer.parseInt(request.queryParams("employees"));
+            Departments newDepartments = new Departments(name,description,employees);
+            departmentsDao.add(newDepartments);
+            System.out.println(newDepartments.getDescription());
+            return new ModelAndView(model,"success.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        get ("/department",(request, response) -> {
+            Map<String,Object>model =new HashMap<>();
+            model.put("departments",departmentsDao.getAll());
+            return new ModelAndView(model,"dept.hbs");
+        },new HandlebarsTemplateEngine());
+
+        post("/news/new",(request, response) -> {
+            Map<String,Object> model =new HashMap<>();
+            String  news =request.queryParams("news");
+            int departmentId =Integer.parseInt(request.queryParams("departmentId"));
+            News newNews = new News(news,departmentId);
+            newsDao.add(newNews);
+            return new ModelAndView(model,"news.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        get ("/news",(request, response) -> {
+                    Map<String,Object>model =new HashMap<>();
+                    model.put("users",userDao.getAll());
+                    return new ModelAndView(model,"news.hbs");
+                },new HandlebarsTemplateEngine());
+
+        post("/user/new",(request, response) -> {
+            Map<String,Object> model =new HashMap<>();
+            String  position =request.queryParams("position");
+            int departmentId =Integer.parseInt(request.queryParams("departmentId"));
+            User newUser = new User(position,departmentId);
+           userDao.add(newUser);
+            return new ModelAndView(model,"user.hbs");
+        }, new HandlebarsTemplateEngine());
+        get ("/user",(request, response) -> {
+            Map<String,Object>model =new HashMap<>();
+            model.put("users",userDao.getAll());
+            return new ModelAndView(model,"user.hbs");
+        },new HandlebarsTemplateEngine());
 
     }
 }

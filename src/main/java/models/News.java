@@ -5,16 +5,25 @@ import java.util.Objects;
 public class News {
     private int id;
     private String content;
+    private  int departmentId;
 
+    public void setDepartmentId(int departmentId) {
+        this.departmentId = departmentId;
+    }
+
+    public int getDepartmentId() {
+        return departmentId;
+    }
 
     public int getId() {
         return id;
     }
-    public void setContent(String content) {
+    public News(String content, int departmentId) {
         this.content = content;
+        this.departmentId=departmentId;
     }
 
-    public News(String content){
+    public void setContent(String content){
         this.content=content;
     }
 

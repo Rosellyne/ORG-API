@@ -1,0 +1,14 @@
+{{#partial "content"}}
+    <h1> Users</h1>
+    {{#if users}}
+        {{#each users}}
+            <p> User's Position:{{position}}</p>
+            <p> Department: {{departmentId}}</p>
+            >
+        {{/each}}
+
+    {{else}}
+        <p> No user yet!</p>
+    {{/if}}
+{{/partial}}
+{{>layout.hbs}}

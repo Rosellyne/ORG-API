@@ -19,7 +19,7 @@ public class NewsTest {
     @Test
     public void getContent() {
         News testNews = setupNews();
-        assertEquals("water storage", testNews.getContent());
+        assertEquals("water storage,1", testNews.getContent());
     }
     @Test
     public void setContent() {
@@ -36,7 +36,7 @@ public class NewsTest {
 
 
     public News setupNews() {
-        return new News("water storage");
+        return new News("water storage",1);
 
     }
 }

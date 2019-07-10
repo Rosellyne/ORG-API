@@ -72,7 +72,7 @@ public class Sql2oNewsDaoTest {
 
 
     public News setupNewNews() {
-        return new News("disease outbreak");
+        return new News("disease outbreak",2);
     }
 
 }

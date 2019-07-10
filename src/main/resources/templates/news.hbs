@@ -1,0 +1,15 @@
+{{#partial "content"}}
+    <h1> Current news</h1>
+
+    {{#if news}}
+        {{#each news}}
+            <p> Published news:{{content}}</p>
+            <p> Department: {{departmentId}}</p>
+           >
+        {{/each}}
+
+    {{else}}
+        <p> No News yet!</p>
+    {{/if}}
+{{/partial}}
+{{>layout.hbs}}
