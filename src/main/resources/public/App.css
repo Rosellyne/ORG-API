@@ -2,10 +2,10 @@ h1{
 text-align:center;
 font-family: 'Times New Roman', Times, serif;
 font-size: 3em;
-color:red;
+color:blue;
 margin-top:100px;
 }
- .form{
+ form{
     padding: 15px;
     margin-bottom:15px;
     background-color:rgba(245, 238, 238, 0.5);
@@ -32,8 +32,8 @@ padding:15px;
 label{
 font-size:1.4;
 }
-.homeland{
-     background-image:Url("https://wallpaperbro.com/img/407104.jpg");
+body{
+     background-image:Url("https://www.xmple.com/wallpaper/single-plain-black-solid-color-one-colour-2048x1152-c-020617-f-24.svg");
     background-repeat: no-repeat;
     background-size: cover;
     height:100vh;
@@ -62,10 +62,7 @@ td{
 
 }
 button{
-padding:30px;
-margin-left: 40%;
-    /* width: 250px;
-    height: 30px; */
+margin-left:5%
     font-size: 1.5em;
-    margin-top: 10%;
+    margin-top:20px;
 }

@@ -1,34 +1,32 @@
 
 {{#partial "content"}}
+    <h1>Add Departments</h1>
    <form action="/department/new" method="post">
-       <h1>Add Departments</h1>
         <label for="name">Enter Department Name:</label>
         <input type="text" name="name" id="name" class="form-control" required>
         <label for="name">Enter Department description:</label>
         <input type="text" name="description" id="description" class="form-control" required>"
     <label for="name">Enter Number of employees:</label>
     <input type="number" name="employees" id="employees" class="form-control" required>
-    <button type="submit">Add Department</button>
+    <button type="submit" btn btn-primary>Add Department</button>
    </form>
 
-
+   <h1>Add News</h1>
    <form action="/news/new" method="post">
-       <h1>Add News</h1>
        <label for="name">Enter the news:</label>
        <input type="text" name="news" id="news" class="form-control" required="required">
        <label for="name">Enter Department id:</label>
        <input type="text" name="departmentId" id="departmentId" class="form-control" required="required">
-       <button type="submit">Add News</button>
+       <button type="submit" btn btn-primary>Add News</button>
    </form>
 
-
+   <h1>Add User</h1>
    <form action="/user/new" method="post">
-       <h1>Add User</h1>
        <label for="name">Enter Position:</label>
        <input type="text" name="position" id="position" class="form-control" required="required">
        <label for="name">Enter Department Id:</label>
        <input type="text" name="departmentId" id="departmentId" class="form-control" required="required">
-       <button type="submit">Add User</button>
+       <button type="submit" btn btn-primary>Add User</button>
    </form>
 
 {{/partial}}
