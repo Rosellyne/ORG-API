@@ -137,7 +137,7 @@ public class App {
             String description = request.queryParams("description");
             int employees =Integer.parseInt(request.queryParams("employees"));
             Departments newDepartments = new Departments(name,description,employees);
-            departmentsDao.add(newDepartments)
+            departmentsDao.add(newDepartments);
             return new ModelAndView(model,"success.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -175,6 +175,12 @@ public class App {
             Map<String,Object>model =new HashMap<>();
             model.put("users",userDao.getAll());
             return new ModelAndView(model,"user.hbs");
+        },new HandlebarsTemplateEngine());
+
+
+        get("/",(request, response) -> {
+            Map<String,Object>model =new HashMap<>();
+            return new ModelAndView(model,"index.hbs");
         },new HandlebarsTemplateEngine());
 
     }
