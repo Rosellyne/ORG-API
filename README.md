@@ -4,7 +4,8 @@
 
 ## Description
 
-This is an applicatins that allow users/rangers to input the different animals that are sighted to be recorded.
+
+This is a spark-java application that enables one dispay the data from a database in form of a json by the use of api;
 
 ## Setup/Installation Requirements
 
@@ -21,13 +22,12 @@ This is an applicatins that allow users/rangers to input the different animals t
 
 ## Program Behaviour
 
-Rangers can add their names so that they can be identified.
-Ranger adds a zone where the sighting was made.
-Ranger adds the name of the animal they sighted.
-Ranger adds the suspected age of the animal.
-Ranger adds the suspected health of the animal.
-Ranger adds species of the animal whether endangered or not endangered
-A timestamp is created by the database to record time of sighting
+* User adds department details.
+* User is able to  see all the departments details.
+* User adds user's details.
+* Displays  the user's details.
+* User posts news.
+* Display all the  current news and posted one.
 
 ## Technologies
 
@@ -35,6 +35,7 @@ A timestamp is created by the database to record time of sighting
 *Java
 *Spark
 *postgres
+*intelli J IDEA
 
 ## Known Bugs
 
